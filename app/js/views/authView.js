@@ -15,7 +15,7 @@ define(['config', 'backbone', 'views/panelView'],
           'blur input': 'clearValidationTimer',
           'keydown': 'postOnEnterKey'
         };
-        events[SEEDS_CONFIG.pointer.up + ' .button'] = 'authenticate'; // e.g. 'touchend .button' = 'authenticate'
+        events[SEEDS_CONFIG.pointer.up + ' .btn'] = 'authenticate'; // e.g. 'touchend .button' = 'authenticate'
         return events;
       },
 
@@ -60,9 +60,11 @@ define(['config', 'backbone', 'views/panelView'],
         count = this.$textfield.val().length;
         if (count < 1) {
           this.$el.addClass('disabled');
+          this.$el.find('input[type=button]').prop("disabled", true);
         }
         else {
           this.$el.removeClass('disabled');
+          this.$el.find('input[type=button]').prop("disabled", false);
         }
       },
 

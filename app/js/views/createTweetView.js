@@ -22,7 +22,7 @@ define(['config', 'backbone', 'views/panelView'],
       initialize: function () { // overriding PanelView
 
         // this is a last minute hack because i can't get this working on the iphone without it.  original commented out in events above.
-        $(document).on('touchend', _.bind(function (e) {
+        $(document).on('touchend click', _.bind(function (e) {
           if (e.target.id == "seeds-tweet-button") {
             this.postTweet()
           }
@@ -65,12 +65,15 @@ define(['config', 'backbone', 'views/panelView'],
         count = this.$textarea.val().length;
         if (count > 140) {
           this.$el.addClass('disabled too-long');
+          this.$el.find("#seeds-tweet-button").prop("disabled", true); 
         }
         else if (count < 1) {
+          this.$el.find("#seeds-tweet-button").prop("disabled", true);
           this.$el.addClass('disabled');
         }
         else {
           this.$el.removeClass('disabled too-long');
+          this.$el.find("#seeds-tweet-button").prop("disabled", false);
         }
         this.showCharCount(count);
       },

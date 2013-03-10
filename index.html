@@ -23,6 +23,9 @@
 
   <link rel="stylesheet" href="app/css/style.css">
 
+  <link rel="stylesheet" href="app/css/bootstrap.css">
+  <link rel="stylesheet" href="app/css/bootstrap-responsive.css">
+
   <!-- scripts that unfortunately have to be loaded in the head -->
   <script>
     var addToHomeConfig = {
@@ -38,39 +41,59 @@
 </head>
 <body>
 
-
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span12">
 <header>
-  <div class="core">
-    <h1 data-view="">Seeds</h1>
-    <ul id="seeds-nav">
-      <li data-view="tweetlist" class="tweetlist-button">
-        <div class="first stripe"><span></span></div>
-        <div class="middle stripe"><span></span></div>
-        <div class="stripe"><span></span></div>
-        <div class="refresh"></div>
-      </li>
-      <li data-view="createtweet"  class="createtweet-button">
-        <div></div>
-      </li>
-    </ul>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+          <a class="brand" href="#" data-view="">Seeds</a>
+
+      <ul class="nav" id="seeds-nav">
+        <li data-view="tweetlist" class="tweetlist-button">
+          <div class="refresh">
+            <buttn class="btn"><i class="icon-refresh"></i></button>
+          </div>
+        </li>
+        <li data-view="createtweet"  class="createtweet-button">
+          <div>            <button class="btn"><i class="icon-edit"></i></button></div>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>
 <section id="seeds-app" class=core>
   <div id="seeds-carousel">
     <div class="auth panel disabled" data-carousel-index="0"></div>
-    <ul class="tweetlist panel" data-carousel-index="1"></ul>
+    <ul class="tweetlist panel unstyled" data-carousel-index="1"></ul>
     <div class="createtweet panel disabled" data-carousel-index="2"></div>
   </div>
 </section>
-
+</div>
+</div>
 
 <!-- backbone templates -->
 <script type="text/template" id="seeds-template-auth">
-  <div class="wrap">
-    <p>Please sign in with your Twitter username:</p>
-    <input type="text" id="seeds-nickname-key" />
-    <div class="button" id="seeds-sign-in-button">Sign in!</div>
-  </div>
+  <fieldset>
+  <legend>Sign In</legend>
+  <form class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="inputEmail">Twitter username:</label>
+      <div class="controls">
+        <div class="input-prepend">
+          <span class="add-on">@</span>
+          <input type="text" id="seeds-nickname-key" placeholder="Username"/>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+      <input type="button"  value="Sign in!" class="btn btn-primary btn-large" id="seeds-sign-in-button"/>
+      </div>
+    </div>
+  </form>
+  </fieldset>
 </script>
 
 <script type="text/template" id="seeds-template-tweet">
@@ -88,11 +111,12 @@
   <div class="wrap">
     <textarea />
     <div class="chars-left"><span class="countdown">140</span><span>&nbsp;characters left</span></div>
-    <div id="seeds-tweet-button" class="button">Tweet</div>
+    <input type="button" id="seeds-tweet-button" class="btn btn-large btn-primary" disabled value="Tweet"/>
   </div>
 </script>
 
 
 <script data-main="app/js/main.js" src="app/js/vendor/requirejs/require.js"></script>
+</div>
 </body>
 </html>
